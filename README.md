@@ -3,7 +3,6 @@
 ## **Bubble Sort**
 ### Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order.
 
-### *Algorithm*
 #### I used a nested for loop and a temp variable to allow me to swap elements in the area.
 
 ```java
