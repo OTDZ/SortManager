@@ -18,6 +18,13 @@ public class SorterApplication {
         System.out.print("Enter array length: ");
         int arrayLength = scanner.nextInt();
 
+        // Randomly generate array
+        int[] array = new int[arrayLength];
+        Random random = new Random();
+        for (int i = 0; i < arrayLength; i++){
+            array[i] = random.nextInt();
+        }
+
 
 
     }
