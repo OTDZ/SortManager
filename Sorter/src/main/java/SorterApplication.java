@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,6 +14,7 @@ public class SorterApplication {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose a sorting algorithm: ");
         System.out.println("1. Bubble Sort");
+        System.out.println();
         int algorithm = scanner.nextInt();
 
         System.out.print("Enter array length: ");
@@ -20,9 +22,10 @@ public class SorterApplication {
 
         // Randomly generate array
         int[] array = new int[arrayLength];
-        Random random = new Random();
+        Random random = new Random() ;
         for (int i = 0; i < arrayLength; i++){
-            array[i] = random.nextInt();
+            // Range is -200 to 200
+            array[i] = random.nextInt(-200, 200);
         }
 
 
