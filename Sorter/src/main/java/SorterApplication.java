@@ -30,10 +30,12 @@ public class SorterApplication {
             arrayToSort[i] = random.nextInt(-200, 200);
         }
 
-        // Output info to user
+        // Displaying unsorted array and sort algorithm to user
         System.out.println();
         System.out.println("The unsorted array: " + Arrays.toString(arrayToSort));
         System.out.print("The selected sorting algorithm is ");
+
+        long startTime = System.nanoTime();
 
         switch (algorithm){
             case 1:
@@ -41,9 +43,16 @@ public class SorterApplication {
                 sortedArray = bubbleSorter.sortArray(arrayToSort);
         }
 
+        // Calculating time taken to sort in seconds
+        long endTime = System.nanoTime();
+        long sortTime = endTime - startTime;
+        double sortTimeInSeconds = (double) sortTime / 1_000_000_000;
+
+        // Displaying sorted array and time taken to user
         System.out.println();
         System.out.println("The sorted array: " + Arrays.toString(sortedArray));
-        
+        System.out.println("The algorithm took " + sortTimeInSeconds + " seconds to sort!");
+
 
 
     }
