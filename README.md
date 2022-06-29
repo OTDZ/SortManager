@@ -17,4 +17,4 @@
         return arrayToSort;
 ```
 
-#### I used a nested for loop and a temp variable to allow me to swap elements in the array.
+#### I used a nested for loop and a temp variable to allow me to swap adjacent elements in the array.
