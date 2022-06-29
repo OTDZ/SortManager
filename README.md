@@ -1,7 +1,7 @@
 # SortManager
 
 ## **Bubble Sort**
-### Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order.
+#### Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order.
 
 ```java
         for (int i = 0; i < arrayToSort.length-1; i++){
@@ -17,4 +17,4 @@
         return arrayToSort;
 ```
 
-### I used a nested for loop and a temp variable to allow me to swap elements in the array.
+#### I used a nested for loop and a temp variable to allow me to swap elements in the array.
