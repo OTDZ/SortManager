@@ -9,6 +9,17 @@ public class SorterApplication {
         // 1. Bubble Sort
 
 
+        // Getting user input
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choose a sorting algorithm: ");
+        System.out.println("1. Bubble Sort");
+        int algorithm = scanner.nextInt();
+
+        System.out.print("Enter array length: ");
+        int arrayLength = scanner.nextInt();
+
+
+
     }
 
 }
