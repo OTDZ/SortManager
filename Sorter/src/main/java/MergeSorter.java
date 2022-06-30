@@ -2,6 +2,7 @@ public class MergeSorter implements Sorter{
 
     @Override
     public int[] sortArray(int[] arrayToSort) {
+
         if (arrayToSort.length > 1){
 
             // Midpoint
@@ -15,8 +16,8 @@ public class MergeSorter implements Sorter{
 
             // Right half
             int[] right = new int[arrayToSort.length - mid];
-            for (int i = 0; i < mid; i++){
-                right[i] = arrayToSort[i+mid];
+            for (int i = mid; i < arrayToSort.length; i++){
+                right[i - mid] = arrayToSort[i];
             }
 
             sortArray(left);
