@@ -16,7 +16,7 @@ class ArrayMergerTest {
     @Test
     void simpleMergeArray(){
         int[] array1 = {6,1,3};
-        int[] array2 = {5,4,2}
+        int[] array2 = {5,4,2};
         int[] expected = {1,2,3,4,5,6};
         Assertions.assertArrayEquals(expected, arrayMerger.mergeArrays(array1, array2));
     }
