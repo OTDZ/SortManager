@@ -85,4 +85,4 @@
         return arrayToSort;
 ```
 
-#### I used recursion and multiple while loops to implement the merge sort
+#### I used recursion and multiple while loops to implement the merge sort.
