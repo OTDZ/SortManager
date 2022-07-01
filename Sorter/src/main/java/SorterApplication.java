@@ -8,12 +8,16 @@ public class SorterApplication {
 
         // Sort algorithms implemented so far:
         // 1. Bubble Sort
+        // 2. Merge Sort
+
         BubbleSorter bubbleSorter = new BubbleSorter();
+        MergeSorter mergeSorter = new MergeSorter();
 
         // Getting user input
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose a sorting algorithm: ");
         System.out.println("1. Bubble Sort");
+        System.out.println("2. Merge Sort");
         int algorithm = scanner.nextInt();
 
         System.out.print("Enter array length: ");
@@ -41,6 +45,9 @@ public class SorterApplication {
             case 1:
                 System.out.println("Bubble Sort");
                 sortedArray = bubbleSorter.sortArray(arrayToSort);
+            case 2:
+                System.out.println("Merge Sort");
+                sortedArray = mergeSorter.sortArray(arrayToSort);
         }
 
         // Calculating time taken to sort in seconds
