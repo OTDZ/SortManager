@@ -83,3 +83,24 @@
 
         return arrayToSort;
 ```
+
+## **Design Patterns**
+### **Factory**
+##### I created a SorterFactory which creates Sorters using the buildSorter function based on the enum that is passed into it.
+```java
+    public Sorter buildSorter(SorterType sorter) {
+
+        switch (sorter){
+            case BUBBLE:
+                BubbleSorter bubbleSorter = new BubbleSorter();
+                return bubbleSorter;
+            case MERGE:
+                MergeSorter mergeSorter = new MergeSorter();
+                return mergeSorter;
+            default:
+                // Throw exception
+                return null;
+        }
+
+    }
+```
