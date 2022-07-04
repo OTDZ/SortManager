@@ -19,4 +19,10 @@ class SorterFactoryTest {
         Assertions.assertEquals(bubbleSorter.getClass(), sorterFactory.buildSorter(SorterType.BUBBLE).getClass());
     }
 
+    @Test
+    void testSorterFactoryMerge(){
+        MergeSorter mergeSorter = new MergeSorter();
+        Assertions.assertEquals(mergeSorter.getClass(), sorterFactory.buildSorter(SorterType.MERGE).getClass());
+    }
+
 }
