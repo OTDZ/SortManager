@@ -16,7 +16,7 @@ class SorterFactoryTest {
     @Test
     void testSorterFactoryBubble(){
         BubbleSorter bubbleSorter = new BubbleSorter();
-        Assertions.assertEquals(bubbleSorter, sorterFactory.buildSorter(Sorter.BUBBLE));
+        Assertions.assertEquals(bubbleSorter, sorterFactory.buildSorter(SorterType.BUBBLE));
     }
 
 }
