@@ -19,7 +19,7 @@
 ```
 
 ### **Merge Sort**
-##### Merge Sort is a divide and conquer sorting algorithm which works by dividing the array into equal halves and then merging them in a sorted manager. I implemented Merge Sort using recursion and multiple while loops to implement the merge sort.
+##### Merge Sort is a divide and conquer sorting algorithm which works by dividing the array into equal halves and then merging them in a sorted manner. I implemented Merge Sort using recursion and multiple while loops.
 
 ```java
         if (arrayToSort.length > 1){
