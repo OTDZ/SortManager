@@ -98,7 +98,6 @@
                 MergeSorter mergeSorter = new MergeSorter();
                 return mergeSorter;
             default:
-                // Throw exception
                 return null;
         }
 
