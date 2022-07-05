@@ -6,10 +6,6 @@ public class SorterApplication {
 
     public static void main(String[] args) {
 
-        // Sort algorithms implemented so far:
-        // 1. Bubble Sort
-        // 2. Merge Sort
-
         BubbleSorter bubbleSorter = new BubbleSorter();
         MergeSorter mergeSorter = new MergeSorter();
 
