@@ -22,11 +22,13 @@ public class DisplayManager {
     }
 
     public void displayUnsortedArray(int[] unsortedArray, Sorter sorter){
+        System.out.println();
         System.out.println("The unsorted array: " + Arrays.toString(unsortedArray));
-        System.out.print("The selected sorting algorithm is " + sorter.toString());
+        System.out.println("The selected sorting algorithm is " + sorter.toString());
     }
 
     public void displayResults(int[] sortedArray, double timeTaken){
+        System.out.println();
         System.out.println("The sorted array: " + Arrays.toString(sortedArray));
         System.out.println("The algorithm took " + timeTaken + " seconds to sort!");
     }

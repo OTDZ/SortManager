@@ -16,8 +16,8 @@ public class SortManager {
         this.displayManager = displayManager;
     }
 
-    public void sort(){
-        
+    public void runSort(){
+
         algorithmChoice = getAlgorithmSelection();
         arrayLength = getArrayLengthSelection();
         sorter = createSorter(algorithmChoice);
