@@ -66,4 +66,9 @@ public class MergeSorter implements Sorter{
 
     }
 
+    @Override
+    public String toString(){
+        return "merge sort";
+    }
+
 }
