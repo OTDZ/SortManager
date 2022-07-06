@@ -21,52 +21,7 @@ public class SortManager {
 
     public void runSort(){
 
-        boolean validAlgorithm = false;
-        boolean validLength = false;
-
-        while (!validAlgorithm){
-
-            try{
-                algorithmChoice = getAlgorithmSelection();
-                validAlgorithm = true;
-                LoggerManager.logger.info("User selected choice: " + algorithmChoice);
-            }
-            catch(InvalidInputException e){
-                e.printStackTrace();
-                System.out.println();
-            }
-            catch(InputMismatchException e){
-                e.printStackTrace();
-                System.out.println();
-                LoggerManager.logger.error("User entered a non-integer during algorithm selection");
-            }
-            catch(Exception e){
-                e.printStackTrace();
-            }
-
-        }
-
-        while (!validLength){
-
-            try{
-                arrayLength = getArrayLengthSelection();
-                validLength = true;
-                LoggerManager.logger.info("User selected array length: " + arrayLength);
-            }
-            catch(InvalidArrayLengthException e){
-                e.printStackTrace();
-                System.out.println();
-            }
-            catch(InputMismatchException e){
-                e.printStackTrace();
-                System.out.println();
-                LoggerManager.logger.error("User entered a non-integer during array length selection");
-            }
-            catch(Exception e){
-                e.printStackTrace();
-            }
-
-        }
+        getUserInput();
 
         sorter = createSorter(algorithmChoice);
         LoggerManager.logger.info("Sorter created: " + sorter.toString());
@@ -92,6 +47,61 @@ public class SortManager {
 
     }
 
+    public void getUserInput(){
+
+        boolean validAlgorithm = false;
+        boolean validLength = false;
+
+        while (!validAlgorithm){
+
+            try{
+                algorithmChoice = getAlgorithmSelection();
+                validAlgorithm = true;
+                LoggerManager.logger.info("User selected choice: " + algorithmChoice);
+            }
+            catch(InvalidInputException e){
+                e.printStackTrace();
+                System.out.println();
+            }
+            catch(InputMismatchException e){
+                e.printStackTrace();
+                System.out.println();
+                LoggerManager.logger.error("User entered a non-integer during algorithm selection");
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                System.out.println();
+                LoggerManager.logger.error("Exception thrown with trace" + e.getStackTrace());
+            }
+
+        }
+
+        while (!validLength){
+
+            try{
+                arrayLength = getArrayLengthSelection();
+                validLength = true;
+                LoggerManager.logger.info("User selected array length: " + arrayLength);
+            }
+            catch(InvalidArrayLengthException e){
+                e.printStackTrace();
+                System.out.println();
+            }
+            catch(InputMismatchException e){
+                e.printStackTrace();
+                System.out.println();
+                LoggerManager.logger.error("User entered a non-integer during array length selection");
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                System.out.println();
+                LoggerManager.logger.error("Exception thrown with trace" + e.getStackTrace());
+            }
+
+        }
+
+    }
+
     // Getting user input for algorithm
     private int getAlgorithmSelection() throws InvalidInputException {
 
@@ -101,6 +111,7 @@ public class SortManager {
         displayManager.displayAlgorithms();
         int num = scanner.nextInt();
 
+        // Throw InvalidInputException if selection not valid
         if (num > algorithmCount || num < 1){
             LoggerManager.logger.error("User selected an invalid number: " + num);
             throw new InvalidInputException("Number selected is not valid");
@@ -119,6 +130,7 @@ public class SortManager {
         displayManager.displayArrayLength();
         int len = scanner.nextInt();
 
+        // Throw InvalidArrayLengthException if selection not valid
         if (len < 1 || len > Integer.MAX_VALUE - 8){
             LoggerManager.logger.error("User selected an invalid array length: " + len);
             throw new InvalidArrayLengthException("Array length is not valid");
