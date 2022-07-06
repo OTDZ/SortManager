@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,19 +11,62 @@ public class SortManager {
     private int arrayLength;
     private int[] arrayToSort;
     private int[] sortedArray;
+    int algorithmCount;
 
-    public SortManager(){
+    public SortManager(int algorithmCount){
         this.sorterFactory = new SorterFactory();
         this.displayManager = new DisplayManager();
+        this.algorithmCount = algorithmCount;
     }
 
     public void runSort(){
 
-        algorithmChoice = getAlgorithmSelection();
-        LoggerManager.logger.info("User selected choice: " + algorithmChoice);
+        boolean validAlgorithm = false;
+        boolean validLength = false;
 
-        arrayLength = getArrayLengthSelection();
-        LoggerManager.logger.info("User selected array length: " + arrayLength);
+        while (!validAlgorithm){
+
+            try{
+                algorithmChoice = getAlgorithmSelection();
+                validAlgorithm = true;
+                LoggerManager.logger.info("User selected choice: " + algorithmChoice);
+            }
+            catch(InvalidInputException e){
+                e.printStackTrace();
+                System.out.println();
+            }
+            catch(InputMismatchException e){
+                e.printStackTrace();
+                System.out.println();
+                LoggerManager.logger.error("User entered a non-integer during algorithm selection");
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+
+        }
+
+        while (!validLength){
+
+            try{
+                arrayLength = getArrayLengthSelection();
+                validLength = true;
+                LoggerManager.logger.info("User selected array length: " + arrayLength);
+            }
+            catch(InvalidArrayLengthException e){
+                e.printStackTrace();
+                System.out.println();
+            }
+            catch(InputMismatchException e){
+                e.printStackTrace();
+                System.out.println();
+                LoggerManager.logger.error("User entered a non-integer during array length selection");
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+
+        }
 
         sorter = createSorter(algorithmChoice);
         LoggerManager.logger.info("Sorter created: " + sorter.toString());
@@ -48,29 +92,39 @@ public class SortManager {
 
     }
 
-    private int[] sortArray(Sorter sorter, int[] arrayToSort) {
-        return sorter.sortArray(arrayToSort);
-    }
-
     // Getting user input for algorithm
-    private int getAlgorithmSelection(){
+    private int getAlgorithmSelection() throws InvalidInputException {
 
         Scanner scanner = new Scanner(System.in);
 
         // Selecting algorithm
         displayManager.displayAlgorithms();
-        return scanner.nextInt();
+        int num = scanner.nextInt();
+
+        if (num > algorithmCount || num < 1){
+            LoggerManager.logger.error("User selected an invalid number: " + num);
+            throw new InvalidInputException("Number selected is not valid");
+        }
+
+        return num;
 
     }
 
 
-    private int getArrayLengthSelection(){
+    private int getArrayLengthSelection() throws InvalidArrayLengthException {
 
         Scanner scanner = new Scanner(System.in);
 
         // Selecting array length
         displayManager.displayArrayLength();
-        return scanner.nextInt();
+        int len = scanner.nextInt();
+
+        if (len < 1 || len > Integer.MAX_VALUE - 8){
+            LoggerManager.logger.error("User selected an invalid array length: " + len);
+            throw new InvalidArrayLengthException("Array length is not valid");
+        }
+
+        return len;
 
     }
 
@@ -100,6 +154,10 @@ public class SortManager {
 
         return randomArray;
 
+    }
+
+    private int[] sortArray(Sorter sorter, int[] arrayToSort) {
+        return sorter.sortArray(arrayToSort);
     }
 
 
