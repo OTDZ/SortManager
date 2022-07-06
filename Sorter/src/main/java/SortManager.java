@@ -11,9 +11,9 @@ public class SortManager {
     private int[] arrayToSort;
     private int[] sortedArray;
 
-    public SortManager(DisplayManager displayManager){
+    public SortManager(){
         this.sorterFactory = new SorterFactory();
-        this.displayManager = displayManager;
+        this.displayManager = new DisplayManager();
     }
 
     public void runSort(){
