@@ -4,7 +4,7 @@ public class TreeSorter implements Sorter{
     public int[] sortArray(int[] arrayToSort) {
 
         // Create a binary search tree
-
+        return null;
 
     }
 
