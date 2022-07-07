@@ -92,7 +92,8 @@
 ```
 
 ### **Tree Sort**
-##### Used the recursive function insertNode to add elements to a binary tree.
+##### Tree Sort uses a binary search tree structure to store elements and then traverses through the tree to return the elements in a sorted order.
+##### I used the recursive function insertNode to add elements to a binary tree.
 ```java
     public Node insertNode(Node current, int newValue){
 
