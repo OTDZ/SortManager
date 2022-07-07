@@ -163,10 +163,12 @@
         // Sort algorithms implemented so far:
         // 1. Bubble Sort
         // 2. Merge Sort
+        // 3. Tree Sort
 
         System.out.println("Choose a sorting algorithm: ");
         System.out.println("1. Bubble Sort");
         System.out.println("2. Merge Sort");
+        System.out.println("3. Tree Sort");
 
     }
 
