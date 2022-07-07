@@ -5,6 +5,8 @@
 ##### Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. I implemented Bubble Sort using a nested for loop and a temp variable to allow me to swap adjacent elements in the array.
 
 ```java
+    public int[] sortArray(int[] arrayToSort) {
+
         for (int i = 0; i < arrayToSort.length-1; i++){
             for (int j = 0; j < arrayToSort.length-i-1; j++){
                 if (arrayToSort[j] > arrayToSort[j + 1]) {
@@ -16,12 +18,15 @@
         }
 
         return arrayToSort;
+    }
 ```
 
 ### **Merge Sort**
 ##### Merge Sort is a divide and conquer sorting algorithm which works by dividing the array into equal halves and then merging them in a sorted manner. I implemented Merge Sort using recursion and multiple while loops.
 
 ```java
+    public int[] sortArray(int[] arrayToSort) {
+
         if (arrayToSort.length > 1){
 
             // Midpoint
@@ -82,6 +87,47 @@
         }
 
         return arrayToSort;
+
+    }
+```
+
+### **Tree Sort**
+##### Used the recursive function insertNode to add elements to a binary tree.
+```java
+    public Node insertNode(Node current, int newValue){
+
+        // If BST is empty
+        if (root == null){
+            root = new Node(newValue);
+            return root;
+        }
+
+        if (current == null){
+            return new Node(newValue);
+        }
+
+        if (newValue < current.value){
+            current.left = insertNode(current.left, newValue);
+        }
+        else if (newValue > current.value){
+            current.right = insertNode(current.right, newValue);
+        }
+
+        return current;
+
+    }
+```
+
+##### Used the recursive function inOrderTraversal to retrieve the elements in the binary tree in a sorted manner.
+```java
+    public int inOrderTraversal(Node current, int[] sortedArray, int index){
+        if (current != null){
+            index = inOrderTraversal(current.left, sortedArray, index);
+            sortedArray[index++] = current.value;
+            index = inOrderTraversal(current.right, sortedArray, index);
+        }
+        return index;
+    }
 ```
 
 ## **Design Patterns**
