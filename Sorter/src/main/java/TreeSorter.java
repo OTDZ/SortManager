@@ -3,8 +3,11 @@ public class TreeSorter implements Sorter{
     @Override
     public int[] sortArray(int[] arrayToSort) {
 
-        // Create a binary search tree
-        return null;
+        BinarySearchTreeManager bstManager = new BinarySearchTreeManager();
+        BinarySearchTree bst = bstManager.generateBinarySearchTree(arrayToSort);
+        int[] sortedArray = bstManager.treeSort(bst, arrayToSort.length);
+
+        return sortedArray;
 
     }
 
