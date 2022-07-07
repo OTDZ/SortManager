@@ -4,7 +4,7 @@ public class SorterDemo {
 
         LoggerManager.logger.info("Program started");
 
-        SortManager sortManager = new SortManager(2);
+        SortManager sortManager = new SortManager(3);
         sortManager.runSort();
 
         LoggerManager.logger.info("Program terminated");

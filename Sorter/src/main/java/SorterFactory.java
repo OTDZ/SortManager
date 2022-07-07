@@ -9,6 +9,9 @@ public class SorterFactory {
             case MERGE:
                 MergeSorter mergeSorter = new MergeSorter();
                 return mergeSorter;
+            case TREE:
+                TreeSorter treeSorter = new TreeSorter();
+                return treeSorter;
             default:
                 // Throw exception
                 return null;

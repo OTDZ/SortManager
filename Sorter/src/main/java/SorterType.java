@@ -1,5 +1,5 @@
 public enum SorterType {
 
-    BUBBLE, MERGE;
+    BUBBLE, MERGE, TREE;
 
 }

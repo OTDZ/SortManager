@@ -148,6 +148,8 @@ public class SortManager {
                 return sorterFactory.buildSorter(SorterType.BUBBLE);
             case 2:
                 return sorterFactory.buildSorter(SorterType.MERGE);
+            case 3:
+                return sorterFactory.buildSorter(SorterType.TREE);
             default:
                 return null;
         }
