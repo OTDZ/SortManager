@@ -93,7 +93,7 @@
 
 ### **Tree Sort**
 ##### Tree Sort uses a binary search tree structure to store elements and then traverses through the tree to return the elements in a sorted order.
-##### I used the recursive function insertNode to add elements to a binary tree.
+##### I used the recursive function insertNode to add elements to the binary tree.
 ```java
     public Node insertNode(Node current, int newValue){
 
@@ -119,7 +119,7 @@
     }
 ```
 
-##### Used the recursive function inOrderTraversal to retrieve the elements in the binary tree in a sorted manner.
+##### I used the recursive function inOrderTraversal to retrieve the elements in the binary tree in a sorted manner.
 ```java
     public int inOrderTraversal(Node current, int[] sortedArray, int index){
         if (current != null){
@@ -144,7 +144,11 @@
             case MERGE:
                 MergeSorter mergeSorter = new MergeSorter();
                 return mergeSorter;
+            case TREE:
+                TreeSorter treeSorter = new TreeSorter();
+                return treeSorter;
             default:
+                // Throw exception
                 return null;
         }
 
