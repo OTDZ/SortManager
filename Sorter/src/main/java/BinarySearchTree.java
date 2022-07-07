@@ -61,6 +61,15 @@ public class BinarySearchTree {
 
     }
 
+    public int inOrderTraversal(Node current, int[] sortedArray, int index){
+        if (current != null){
+            index = inOrderTraversal(current.left, sortedArray, index);
+            sortedArray[index++] = current.value;
+            index = inOrderTraversal(current.right, sortedArray, index);
+        }
+        return index;
+    }
+
     public Node getRoot() {
         return root;
     }
