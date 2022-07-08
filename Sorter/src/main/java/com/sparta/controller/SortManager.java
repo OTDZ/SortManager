@@ -34,7 +34,7 @@ public class SortManager {
         getUserInput();
 
         sorter = createSorter(algorithmChoice);
-        LoggerManager.logger.info("com.sparta.sorters.Sorter created: " + sorter.toString());
+        LoggerManager.logger.info("Sorter created: " + sorter.toString());
 
         arrayToSort = generateRandomArray(arrayLength);
         LoggerManager.logger.info("Array randomly generated");

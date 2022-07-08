@@ -1,5 +1,8 @@
 package com.sparta.sorters;
 
+import com.sparta.sorters.binaryTree.BinarySearchTree;
+import com.sparta.sorters.binaryTree.BinarySearchTreeManager;
+
 public class TreeSorter implements Sorter {
 
     @Override
