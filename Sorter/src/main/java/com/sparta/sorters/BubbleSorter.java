@@ -1,4 +1,6 @@
-public class BubbleSorter implements Sorter{
+package com.sparta.sorters;
+
+public class BubbleSorter implements Sorter {
 
     @Override
     public int[] sortArray(int[] arrayToSort) {

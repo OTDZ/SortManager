@@ -1,3 +1,8 @@
+package com.sparta.sorters;
+
+import com.sparta.enums.SorterType;
+import com.sparta.sorters.*;
+
 public class SorterFactory {
 
     public Sorter buildSorter(SorterType sorter) {

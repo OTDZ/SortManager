@@ -1,3 +1,5 @@
+package com.sparta.sorters.binaryTree;
+
 public class BinarySearchTree {
 
     // nested class Node

@@ -1,3 +1,7 @@
+package com.sparta.display;
+
+import com.sparta.sorters.Sorter;
+
 import java.util.Arrays;
 import java.util.Scanner;
 

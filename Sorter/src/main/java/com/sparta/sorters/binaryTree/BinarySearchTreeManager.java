@@ -1,3 +1,5 @@
+package com.sparta.sorters.binaryTree;
+
 import java.util.Arrays;
 
 public class BinarySearchTreeManager {

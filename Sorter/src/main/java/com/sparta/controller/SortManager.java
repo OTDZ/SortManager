@@ -1,3 +1,13 @@
+package com.sparta.controller;
+
+import com.sparta.display.DisplayManager;
+import com.sparta.enums.SorterType;
+import com.sparta.exceptions.InvalidArrayLengthException;
+import com.sparta.exceptions.InvalidInputException;
+import com.sparta.logger.LoggerManager;
+import com.sparta.sorters.Sorter;
+import com.sparta.sorters.SorterFactory;
+
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
@@ -24,7 +34,7 @@ public class SortManager {
         getUserInput();
 
         sorter = createSorter(algorithmChoice);
-        LoggerManager.logger.info("Sorter created: " + sorter.toString());
+        LoggerManager.logger.info("com.sparta.sorters.Sorter created: " + sorter.toString());
 
         arrayToSort = generateRandomArray(arrayLength);
         LoggerManager.logger.info("Array randomly generated");
@@ -111,7 +121,7 @@ public class SortManager {
         displayManager.displayAlgorithms();
         int num = scanner.nextInt();
 
-        // Throw InvalidInputException if selection not valid
+        // Throw com.sparta.exceptions.InvalidInputException if selection not valid
         if (num > algorithmCount || num < 1){
             LoggerManager.logger.error("User selected an invalid number: " + num);
             throw new InvalidInputException("Number selected is not valid");
@@ -130,7 +140,7 @@ public class SortManager {
         displayManager.displayArrayLength();
         int len = scanner.nextInt();
 
-        // Throw InvalidArrayLengthException if selection not valid
+        // Throw com.sparta.exceptions.InvalidArrayLengthException if selection not valid
         if (len < 1 || len > Integer.MAX_VALUE - 8){
             LoggerManager.logger.error("User selected an invalid array length: " + len);
             throw new InvalidArrayLengthException("Array length is not valid");
@@ -140,7 +150,7 @@ public class SortManager {
 
     }
 
-    // Creating Sorter using SorterFactory
+    // Creating com.sparta.sorters.Sorter using com.sparta.sorters.SorterFactory
     private Sorter createSorter(int algorithmChoice){
 
         switch (algorithmChoice){
