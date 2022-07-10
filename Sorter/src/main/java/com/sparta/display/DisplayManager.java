@@ -37,4 +37,18 @@ public class DisplayManager {
         System.out.println("The algorithm took " + timeTaken + " seconds to sort!");
     }
 
+    public void displayCompareAlgorithms(){
+        System.out.println();
+        System.out.println("Would you like to select another algorithm to compare performance? [y/n]");
+    }
+
+    public void displayComparisonResults(String algorithmOneName, double algorithmOneTime, String algorithmTwoName, double algorithmTwoTime, int[] unsortedArray, int[] sortedArray) {
+        System.out.println();
+        System.out.println("Comparison overview");
+        System.out.println("The unsorted array: " + Arrays.toString(unsortedArray));
+        System.out.println("The sorted array: " + Arrays.toString(sortedArray));
+        System.out.println(algorithmOneName + " took " + algorithmOneTime + " seconds to sort!");
+        System.out.println(algorithmTwoName + " took " + algorithmTwoTime + " seconds to sort!");
+
+    }
 }

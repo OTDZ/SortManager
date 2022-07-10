@@ -18,7 +18,7 @@ public class TreeSorter implements Sorter {
 
     @Override
     public String toString(){
-        return "tree sort";
+        return "Tree sort";
     }
 
 }

@@ -8,6 +8,7 @@ import com.sparta.logger.LoggerManager;
 import com.sparta.sorters.Sorter;
 import com.sparta.sorters.SorterFactory;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
@@ -20,8 +21,10 @@ public class SortManager {
     private int algorithmChoice;
     private int arrayLength;
     private int[] arrayToSort;
+    private int[] arrayToSortCopy;
     private int[] sortedArray;
     int algorithmCount;
+    String compareChoice;
 
     public SortManager(int algorithmCount){
         this.sorterFactory = new SorterFactory();
@@ -29,9 +32,10 @@ public class SortManager {
         this.algorithmCount = algorithmCount;
     }
 
-    public void runSort(){
+    public void runSort() {
 
-        getUserInput();
+        getAlgorithmChoice();
+        getArrayLength();
 
         sorter = createSorter(algorithmChoice);
         LoggerManager.logger.info("Sorter created: " + sorter.toString());
@@ -41,6 +45,9 @@ public class SortManager {
 
         displayManager.displayUnsortedArray(arrayToSort, sorter);
         LoggerManager.logger.info("Unsorted array and sorting algorithm displayed to user");
+
+        // Copy of original unsorted array for comparison
+        arrayToSortCopy = Arrays.copyOfRange(arrayToSort, 0, arrayToSort.length);
 
         long startTime = System.nanoTime();
 
@@ -52,21 +59,95 @@ public class SortManager {
         long sortTime = endTime - startTime;
         double sortTimeInSeconds = (double) sortTime / 1_000_000_000;
 
+        // Displaying final results
         displayManager.displayResults(sortedArray, sortTimeInSeconds);
         LoggerManager.logger.info("Sorted array and time taken displayed to user, time taken (seconds): " + sortTimeInSeconds);
 
+        // Asking if user wants to compare
+        getCompareChoice();
+
+        if (compareChoice.equals("y")){
+            runSortCompare(sorter.toString(), sortTimeInSeconds);
+        }
+
     }
 
-    // Getting user input using a while loop for validation
-    public void getUserInput(){
+    public void runSortCompare(String algorithmOneName, double algorithmOneTime){
+
+        getAlgorithmChoice();
+
+        sorter = createSorter(algorithmChoice);
+        LoggerManager.logger.info("Sorter created: " + sorter.toString());
+
+        long startTime = System.nanoTime();
+
+        sortedArray = sortArray(sorter, arrayToSortCopy);
+        LoggerManager.logger.info("Array sorted");
+
+        // Calculating time taken to sort in seconds
+        long endTime = System.nanoTime();
+        long sortTime = endTime - startTime;
+        double sortTimeInSeconds = (double) sortTime / 1_000_000_000;
+
+        displayManager.displayComparisonResults(algorithmOneName, algorithmOneTime, sorter.toString(), sortTimeInSeconds, arrayToSortCopy, sortedArray);
+
+    }
+
+    public void getCompareChoice(){
+
+        boolean validChoice = false;
+
+        while (!validChoice){
+
+            try{
+                compareChoice = getCompareChoiceInput();
+                validChoice = true;
+                LoggerManager.logger.info("User selected choice: " + compareChoice);
+            }
+            catch(InvalidInputException e){
+                e.printStackTrace();
+                System.out.println();
+            }
+            catch(InputMismatchException e){
+                e.printStackTrace();
+                System.out.println();
+                LoggerManager.logger.error("User entered a non-integer during algorithm selection");
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                System.out.println();
+                LoggerManager.logger.error("Exception thrown with trace" + e.getStackTrace());
+            }
+
+        }
+
+    }
+
+    public String getCompareChoiceInput() throws InvalidInputException {
+
+        Scanner scanner = new Scanner(System.in);
+
+        displayManager.displayCompareAlgorithms();
+        String choice = scanner.nextLine();
+
+        if (choice.equals("y") || choice.equals("n")){
+            return choice;
+        }
+        else{
+            LoggerManager.logger.error("User selected an invalid compare option");
+            throw new InvalidInputException("Option selected is not valid");
+        }
+    }
+
+    // Getting user choice for algorithm
+    public void getAlgorithmChoice(){
 
         boolean validAlgorithm = false;
-        boolean validLength = false;
 
         while (!validAlgorithm){
 
             try{
-                algorithmChoice = getAlgorithmSelection();
+                algorithmChoice = getAlgorithmChoiceInput();
                 validAlgorithm = true;
                 LoggerManager.logger.info("User selected choice: " + algorithmChoice);
             }
@@ -87,10 +168,35 @@ public class SortManager {
 
         }
 
+    }
+
+    private int getAlgorithmChoiceInput() throws InvalidInputException {
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Selecting algorithm
+        displayManager.displayAlgorithms();
+        int num = scanner.nextInt();
+
+        // Throw InvalidInputException if selection not valid
+        if (num > algorithmCount || num < 1){
+            LoggerManager.logger.error("User selected an invalid number: " + num);
+            throw new InvalidInputException("Number selected is not valid");
+        }
+
+        return num;
+
+    }
+
+    // Getting user choice for array length
+    public void getArrayLength(){
+
+        boolean validLength = false;
+
         while (!validLength){
 
             try{
-                arrayLength = getArrayLengthSelection();
+                arrayLength = getArrayLengthInput();
                 validLength = true;
                 LoggerManager.logger.info("User selected array length: " + arrayLength);
             }
@@ -113,27 +219,8 @@ public class SortManager {
 
     }
 
-    // Getting user input for algorithm
-    private int getAlgorithmSelection() throws InvalidInputException {
-
-        Scanner scanner = new Scanner(System.in);
-
-        // Selecting algorithm
-        displayManager.displayAlgorithms();
-        int num = scanner.nextInt();
-
-        // Throw com.sparta.exceptions.InvalidInputException if selection not valid
-        if (num > algorithmCount || num < 1){
-            LoggerManager.logger.error("User selected an invalid number: " + num);
-            throw new InvalidInputException("Number selected is not valid");
-        }
-
-        return num;
-
-    }
-
     // Getting user input for array length
-    private int getArrayLengthSelection() throws InvalidArrayLengthException {
+    private int getArrayLengthInput() throws InvalidArrayLengthException {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -141,7 +228,7 @@ public class SortManager {
         displayManager.displayArrayLength();
         int len = scanner.nextInt();
 
-        // Throw com.sparta.exceptions.InvalidArrayLengthException if selection not valid
+        // Throw InvalidArrayLengthException if selection not valid
         if (len < 1 || len > Integer.MAX_VALUE - 8){
             LoggerManager.logger.error("User selected an invalid array length: " + len);
             throw new InvalidArrayLengthException("Array length is not valid");
