@@ -1,8 +1,5 @@
 # SortManager
 
-## **Project Description**
-#### A program that implements several sorting algorithms which can be used to sort a randomised array.
-
 ## **Run Instructitons**
 #### Navigate to SorterDemo class in the com.sparta.start package and run the main method
 
