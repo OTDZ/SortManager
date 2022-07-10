@@ -1,6 +1,6 @@
 # SortManager
 
-## **Run Instructitons**
+## **Run Instructions**
 #### Navigate to SorterDemo class in the com.sparta.start package and run the main method
 
 ## **Sorting Algorithms**
