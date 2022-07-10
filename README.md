@@ -217,7 +217,7 @@
     }
 ```
 
-### **Facade**
+### **Adapter/Facade**
 ##### I used a class named BinarySearchTreeManager as a middle-man between the TreeSorter and BinarySearchTree in order to hide the complexity of the BinarySearchTree.
 ```java
 public class BinarySearchTreeManager {
