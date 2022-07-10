@@ -1,5 +1,11 @@
 # SortManager
 
+## **Project Description**
+##### A program that implements several sorting algorithms which can be used to sort a randomised array.
+
+## **Run Instructitons**
+##### Navigate to SorterDemo class in the com.sparta.start package and run the main method
+
 ## **Sorting Algorithms**
 ### **Bubble Sort**
 ##### Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. I implemented Bubble Sort using a nested for loop and a temp variable to allow me to swap adjacent elements in the array.
