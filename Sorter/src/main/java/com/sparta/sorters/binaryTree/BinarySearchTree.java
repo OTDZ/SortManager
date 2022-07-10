@@ -40,6 +40,7 @@ public class BinarySearchTree {
 
     private Node root;
 
+    // Recursive algorithm to insert a node
     public Node insertNode(Node current, int newValue){
 
         // If BST is empty
@@ -63,6 +64,7 @@ public class BinarySearchTree {
 
     }
 
+    // In-Order traversal to go through the binary tree in a sorted manner
     public int inOrderTraversal(Node current, int[] sortedArray, int index){
         if (current != null){
             index = inOrderTraversal(current.left, sortedArray, index);

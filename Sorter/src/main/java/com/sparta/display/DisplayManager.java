@@ -7,8 +7,6 @@ import java.util.Scanner;
 
 public class DisplayManager {
 
-    // View
-
     public void displayAlgorithms(){
 
         // Sort algorithms implemented so far:

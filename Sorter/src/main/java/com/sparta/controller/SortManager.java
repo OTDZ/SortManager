@@ -57,6 +57,7 @@ public class SortManager {
 
     }
 
+    // Getting user input using a while loop for validation
     public void getUserInput(){
 
         boolean validAlgorithm = false;
@@ -131,7 +132,7 @@ public class SortManager {
 
     }
 
-
+    // Getting user input for array length
     private int getArrayLengthSelection() throws InvalidArrayLengthException {
 
         Scanner scanner = new Scanner(System.in);
@@ -150,7 +151,7 @@ public class SortManager {
 
     }
 
-    // Creating com.sparta.sorters.Sorter using com.sparta.sorters.SorterFactory
+    // Creating Sorter using SorterFactory
     private Sorter createSorter(int algorithmChoice){
 
         switch (algorithmChoice){
@@ -166,6 +167,7 @@ public class SortManager {
 
     }
 
+    // Generating random array - bounds set to -200,200
     private int[] generateRandomArray(int length){
 
         Random random = new Random();
